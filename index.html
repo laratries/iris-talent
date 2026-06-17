@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IRIS — Talent Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F5F4F0;color:#1a1a18;min-height:100vh}
+:root{--t:#2D7D6F;--tl:#E1F5EE;--tm:#5DCAA5;--ink:#1a1a18;--i2:#4a4a47;--i3:#8a8a85;--sf:#fff;--bg:#F5F4F0;--bd:#E0DDD5;--am:#B87A1A;--ab:#FFF8ED;--re:#B03030;--rb:#FFF0F0;--gr:#2D7D4F;--gb:#F0FAF4;--bl:#1A5FB4;--bb:#EBF3FF;}
+.page{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+.hero{text-align:center;padding:64px 0 40px}
+.logo{display:inline-flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;border:2px solid var(--ink);margin-bottom:20px;position:relative}
+.li{width:20px;height:20px;border-radius:50%;background:var(--t);position:relative}
+.li::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.lr{position:absolute;inset:-2px;border-radius:50%;border:1px solid var(--bd)}
+h1{font-family:'DM Serif Display',serif;font-size:68px;letter-spacing:-2px;line-height:1;margin-bottom:14px}
+.tagline{font-style:italic;font-family:'DM Serif Display',serif;font-size:18px;color:var(--t);margin-bottom:10px}
+.sub{font-size:14px;color:var(--i3);max-width:420px;margin:0 auto;line-height:1.6}
+.card{background:var(--sf);border-radius:20px;border:1px solid var(--bd);overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.04);margin-top:32px}
+.tabs{display:flex;padding:6px;background:#F5F4F0;gap:4px}
+.tb{flex:1;padding:10px 14px;border-radius:14px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--i3);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .2s}
+.tb.on{background:var(--sf);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.bd{padding:28px}
+.ql{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--i3);margin-bottom:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.ch{padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:var(--sf);font-size:12px;font-weight:500;color:var(--i2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.ch:hover{border-color:var(--t);color:var(--t);background:var(--tl)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.ff{display:flex;flex-direction:column;gap:5px}.ff.full{grid-column:1/-1}
+.fl{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--i3);text-transform:uppercase}
+.fi{padding:10px 13px;border:1px solid var(--bd);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--t);background:#fff}
+.fi::placeholder{color:#bbb}
+textarea.fi{resize:none;height:76px}
+.btn{width:100%;padding:13px;background:var(--t);color:#fff;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;margin-top:8px}
+.btn:hover{background:#225f54;transform:translateY(-1px);box-shadow:0 4px 12px rgba(45,125,111,.3)}
+.btn:disabled{background:#9ecfc7;cursor:not-allowed;transform:none;box-shadow:none}
+.arch{margin-top:36px}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ap{background:var(--sf);border-radius:16px;border:1px solid var(--bd);overflow:hidden}
+.ah{padding:13px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:#fafaf8;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--i2)}
+.asr{display:flex;align-items:center;gap:7px;padding:9px 13px;border-bottom:1px solid var(--bd)}
+.asr input{flex:1;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none}
+.ath{display:grid;padding:7px 14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--i3);border-bottom:1px solid var(--bd)}
+.rth{grid-template-columns:1fr 70px 88px 76px 26px}
+.cth{grid-template-columns:1fr 76px 52px}
+.ar{display:grid;padding:11px 14px;font-size:13px;border-bottom:.5px solid var(--bd);align-items:center;cursor:pointer;transition:background .15s}
+.ar:hover{background:#f8f7f3}
+.ar:last-child{border-bottom:none}
+.rr{grid-template-columns:1fr 70px 88px 76px 26px}
+.cr{grid-template-columns:1fr 76px 52px}
+.pill{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:20px;text-transform:uppercase}
+.pg{background:var(--gb);color:var(--gr)}.pa{background:var(--ab);color:var(--am)}
+.rt{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:6px}
+.rm{color:var(--i3);font-size:12px}
+.cn2{display:flex;align-items:center;gap:4px;font-weight:600;color:var(--t);font-size:13px}
+.mbg{display:none;position:fixed;inset:0;background:rgba(20,20,18,.55);z-index:100;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.mbg.on{display:flex}
+.modal{background:var(--sf);border-radius:20px;width:100%;max-width:900px;margin:auto;overflow:hidden;animation:mIn .2s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.mh{padding:18px 26px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:#fafaf8}
+.mc{background:none;border:1px solid var(--bd);border-radius:8px;padding:5px 9px;cursor:pointer;color:var(--i2);display:flex}
+.mb{padding:26px;max-height:82vh;overflow-y:auto}
+.ldw{display:flex;flex-direction:column;align-items:center;gap:14px;padding:44px 0}
+.spin{width:44px;height:44px;border-radius:50%;border:2px solid var(--tl);border-top-color:var(--t);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lst{display:flex;flex-direction:column;gap:9px;min-width:240px}
+.ls{font-size:13px;color:var(--i3);display:flex;align-items:center;gap:7px;opacity:0;transition:opacity .5s}
+.ls.on{opacity:1;color:var(--i2)}
+.stbs{display:flex;border-bottom:1px solid var(--bd);margin-bottom:22px;overflow-x:auto}
+.stb{padding:9px 16px;font-size:13px;font-weight:500;color:var(--i3);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif}
+.stb.on{color:var(--t);border-bottom-color:var(--t)}
+.spp{display:none}.spp.on{display:block}
+.bg3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:22px}
+.bc{background:var(--bg);border-radius:12px;padding:15px}
+.bcl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--i3);margin-bottom:5px}
+.bcv{font-size:19px;font-weight:600;color:var(--ink)}
+.sigs{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.sig{display:flex;align-items:flex-start;gap:9px;padding:11px;background:var(--tl);border-radius:10px;font-size:13px;color:var(--i2);line-height:1.5}
+.sig i{color:var(--t);font-size:15px;flex-shrink:0;margin-top:1px}
+.sh{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--i3);margin-bottom:9px}
+.prose{font-size:14px;color:var(--i2);line-height:1.7;margin-bottom:18px}
+.cw{display:flex;flex-direction:column}
+.cc{border-bottom:1px solid var(--bd)}.cc:last-child{border-bottom:none}
+.ccm{display:grid;grid-template-columns:30px 1fr auto auto auto;gap:11px;align-items:center;padding:13px 15px;cursor:pointer;transition:background .15s}
+.ccm:hover{background:#f8f7f3}
+.rb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;flex-shrink:0}
+.r1{background:#FFF0D6;color:#A06000}.r2{background:#F0F0F0;color:#555}.r3{background:#FFF0E8;color:#A04020}.rn{background:var(--bg);color:var(--i3)}
+.ci{min-width:0}
+.cn{font-weight:600;font-size:13px;color:var(--ink);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.cs{font-size:12px;color:var(--i3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lic{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;background:#EBF3FF;color:#1A5FB4;font-size:11px;font-weight:600;text-decoration:none;flex-shrink:0}
+.lic:hover{background:#d0e6ff}
+.lic svg{width:10px;height:10px;fill:#1A5FB4;flex-shrink:0}
+.fc{display:flex;align-items:center;gap:7px;min-width:96px}
+.ft{flex:1;height:5px;background:var(--bd);border-radius:3px;overflow:hidden;min-width:46px}
+.ff2{height:100%;border-radius:3px;background:var(--t)}
+.fp{font-size:13px;font-weight:700;color:var(--t);min-width:30px;text-align:right}
+.exb{background:none;border:none;cursor:pointer;color:var(--i3);padding:3px;display:flex;align-items:center;transition:transform .2s,color .15s}
+.exb.on{transform:rotate(180deg);color:var(--t)}
+.dr{display:none;background:#fafaf8;border-top:1px solid var(--bd)}
+.dr.on{display:block}
+.dri{padding:18px 18px 18px 54px;display:flex;flex-direction:column;gap:14px}
+.dtg{display:flex;flex-wrap:wrap;gap:5px}
+.tg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:500}
+.ts{background:#F0F4FF;color:#2D4FA8}.tl{background:#F0FAF4;color:#2D7D4F}.te{background:#FFF8ED;color:#B87A1A}.tu{background:#F5F0FF;color:#6B35B8}
+.dn{font-size:13px;color:var(--i2);line-height:1.6;padding:11px 13px;background:var(--tl);border-radius:10px;border-left:3px solid var(--t)}
+.das{display:flex;flex-wrap:wrap;gap:7px}
+.da{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:8px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid var(--bd);background:var(--sf);color:var(--i2);transition:all .15s;white-space:nowrap;text-decoration:none}
+.da:hover{border-color:var(--i2);color:var(--ink)}
+.da i{font-size:14px}
+.da.pr{background:var(--t);color:#fff;border-color:var(--t)}.da.pr:hover{background:#225f54}
+.da.ng{color:var(--re);border-color:#f0c0c0}.da.ng:hover{background:var(--rb)}
+.da.am{color:var(--am);border-color:#f0d090}.da.am:hover{background:var(--ab)}
+.da.dsl{background:var(--gb);color:var(--gr);border-color:#b0dfc0}
+.da.dps{background:var(--rb);color:var(--re);border-color:#f0c0c0}
+.ddv{height:1px;background:var(--bd);margin:0 -18px 0 -54px}
+.fb{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+.fc2{padding:4px 11px;border-radius:20px;border:1px solid var(--bd);background:var(--sf);font-size:12px;font-weight:500;color:var(--i3);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.fc2.on{background:var(--t);color:#fff;border-color:var(--t)}
+.fs{padding:5px 9px;border-radius:8px;border:1px solid var(--bd);background:var(--sf);font-size:12px;font-family:'DM Sans',sans-serif;color:var(--i2);cursor:pointer;outline:none}
+.na{width:100%;padding:9px 11px;border:1px solid var(--bd);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;resize:none;height:68px;color:var(--ink);background:#fff;outline:none}
+.na:focus{border-color:var(--t)}
+.sr{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.sl{width:105px;font-size:13px;color:var(--i2);font-weight:500;flex-shrink:0}
+.st{flex:1;height:8px;background:var(--bd);border-radius:4px;position:relative}
+.sr2{position:absolute;height:100%;border-radius:4px;background:var(--t)}
+.sv{font-size:12px;color:var(--i3);width:126px;text-align:right;flex-shrink:0}
+.oc{width:1px;height:14px;background:var(--bd);margin:0 auto}
+.ol{display:flex;gap:11px;justify-content:center;padding:11px 0;flex-wrap:wrap}
+.on2{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:9px 13px;text-align:center;min-width:100px}
+.on2.root{border-color:var(--t);background:var(--tl)}
+.nt{font-size:12px;font-weight:600;color:var(--ink)}
+.ns{font-size:11px;color:var(--i3)}
+.rmeta{font-size:13px;color:var(--i3);display:flex;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.rmeta span{display:flex;align-items:center;gap:4px}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a18;color:#fff;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none}
+@media(max-width:640px){h1{font-size:44px}.grid{grid-template-columns:1fr}.ag{grid-template-columns:1fr}.bg3{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <div class="logo"><div class="lr"></div><div class="li"></div></div>
+    <h1>IRIS</h1>
+    <p class="tagline">Your ever-curious eye behind every great talent strategy.</p>
+    <p class="sub">Uncover hidden talent signals, identify high-fit candidates, and stay ahead of competitive hiring movements.</p>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tb on" id="tR" onclick="sw('r',this)"><i class="ti ti-user-search"></i> Role Intelligence</button>
+      <button class="tb" id="tC" onclick="sw('c',this)"><i class="ti ti-building-skyscraper"></i> Company Intelligence</button>
+      <button class="tb" id="tA" onclick="sw('a',this)"><i class="ti ti-sparkles"></i> Let IRIS Decide</button>
+    </div>
+
+    <div class="bd" id="pR">
+      <div class="ql">Quick-fill examples</div>
+      <div class="chips">
+        <button class="ch" onclick="fr('Head of Product','Senior','San Francisco, CA','SaaS','Product Strategy, Roadmapping','Q3 Head of Product — SaaS')">Head of Product · SF</button>
+        <button class="ch" onclick="fr('Data Science Lead','Senior','Boston, MA','Healthcare','Python, ML, NLP','Data Science Lead — Healthcare')">Data Science Lead · Boston</button>
+        <button class="ch" onclick="fr('Product Manager','Senior','Jakarta','E-commerce, Fintech','Agile, SQL, User Research','Senior PM — Jakarta')">PM · Jakarta</button>
+        <button class="ch" onclick="fr('Engineering Manager','Senior','Singapore','Fintech','System Design, Leadership','Eng Manager — Singapore')">Eng Manager · Singapore</button>
+        <button class="ch" onclick="fr('UX Designer','Mid','Remote','SaaS','Figma, User Research','UX Designer — Remote')">UX Designer · Remote</button>
+      </div>
+      <div class="grid">
+        <div class="ff full"><label class="fl">Search Title</label><input class="fi" id="rT" placeholder="e.g. Q3 Senior PM — Fintech"/></div>
+        <div class="ff"><label class="fl">Target Role</label><input class="fi" id="rR" placeholder="e.g. Product Manager"/></div>
+        <div class="ff"><label class="fl">Seniority</label><select class="fi" id="rS"><option value="">Level</option><option>Junior</option><option>Mid</option><option>Senior</option><option>Lead</option><option>Head of</option><option>Director</option><option>VP</option><option>C-Suite</option></select></div>
+        <div class="ff"><label class="fl">Location</label><input class="fi" id="rL" placeholder="e.g. San Francisco, CA"/></div>
+        <div class="ff"><label class="fl">Industry</label><input class="fi" id="rI" placeholder="e.g. Fintech, SaaS"/></div>
+        <div class="ff full"><label class="fl">Required Skills</label><textarea class="fi" id="rK" placeholder="e.g. React, System Design, Stakeholder Management"></textarea></div>
+      </div>
+      <button class="btn" id="bR" onclick="doR()"><i class="ti ti-arrow-right"></i> Begin Role Intelligence</button>
+    </div>
+
+    <div class="bd" id="pC" style="display:none">
+      <div class="ql">Quick-fill examples</div>
+      <div class="chips">
+        <button class="ch" onclick="fc('Stripe','Engineering hiring signals and leadership changes')">Stripe</button>
+        <button class="ch" onclick="fc('Gojek','Product and engineering talent movement')">Gojek</button>
+        <button class="ch" onclick="fc('Tokopedia','Senior product and data talent')">Tokopedia</button>
+        <button class="ch" onclick="fc('Notion','PM and design hiring signals')">Notion</button>
+        <button class="ch" onclick="fc('Grab','Engineering leadership and expansion hiring')">Grab</button>
+        <button class="ch" onclick="fc('Traveloka','Product and growth talent pipeline')">Traveloka</button>
+      </div>
+      <div class="grid">
+        <div class="ff full"><label class="fl">Company Name</label><input class="fi" id="cN" placeholder="e.g. Stripe, Gojek, Tokopedia"/></div>
+        <div class="ff full"><label class="fl">Focus Area (optional)</label><input class="fi" id="cF" placeholder="e.g. Engineering hiring signals, leadership changes"/></div>
+      </div>
+      <button class="btn" id="bC" onclick="doC()"><i class="ti ti-arrow-right"></i> Begin Company Intelligence</button>
+    </div>
+
+    <div class="bd" id="pA" style="display:none">
+      <div class="ql">Try these prompts</div>
+      <div class="chips">
+        <button class="ch" onclick="fa('Senior ML engineer for a health-tech startup in Jakarta')">ML Engineer · Jakarta</button>
+        <button class="ch" onclick="fa('Gojek talent intelligence — hiring signals and who to target')">Gojek intel</button>
+        <button class="ch" onclick="fa('VP of Engineering for a Series B fintech in Singapore')">VP Eng · Singapore</button>
+        <button class="ch" onclick="fa('Company intelligence on Tokopedia product talent')">Tokopedia intel</button>
+      </div>
+      <div class="ff" style="margin-bottom:14px"><label class="fl">What do you need to know?</label><textarea class="fi" id="aQ" style="height:96px" placeholder="e.g. I need to hire a senior ML engineer for a health-tech startup in Jakarta"></textarea></div>
+      <button class="btn" id="bA" onclick="doA()"><i class="ti ti-sparkles"></i> Let IRIS Decide</button>
+    </div>
+  </div>
+
+  <div class="arch" style="margin-top:36px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--i3);display:flex;align-items:center;gap:7px;margin-bottom:18px"><i class="ti ti-library"></i> Intelligence Library</div>
+    <div class="ag">
+      <div class="ap">
+        <div class="ah"><span style="display:flex;align-items:center;gap:6px"><i class="ti ti-user-search"></i>Role Projects</span><span id="rc" style="font-size:12px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--i3)"></span></div>
+        <div class="asr"><i class="ti ti-search" style="color:var(--i3)"></i><input placeholder="Search..." oninput="fR(this.value)"/></div>
+        <div class="ath rth"><span>Title</span><span>Seniority</span><span>Location</span><span>Status</span><span></span></div>
+        <div id="rl"></div>
+      </div>
+      <div class="ap">
+        <div class="ah"><span style="display:flex;align-items:center;gap:6px"><i class="ti ti-building-skyscraper"></i>Company Reports</span><span id="cct" style="font-size:12px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--i3)"></span></div>
+        <div class="asr"><i class="ti ti-search" style="color:var(--i3)"></i><input placeholder="Search..." oninput="fC(this.value)"/></div>
+        <div class="ath cth"><span>Company / Report</span><span>Status</span><span>Updated</span></div>
+        <div id="cl"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mbg" id="modal">
+  <div class="modal">
+    <div class="mh">
+      <div>
+        <div id="mB" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--t);margin-bottom:3px"></div>
+        <div id="mT" style="font-size:16px;font-weight:600;color:var(--ink)"></div>
+      </div>
+      <button class="mc" onclick="cM()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="mb" id="mBd"></div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const CS={};let RP=[],CP=[];
+
+function sw(t,b){document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('pR').style.display=t==='r'?'block':'none';document.getElementById('pC').style.display=t==='c'?'block':'none';document.getElementById('pA').style.display=t==='a'?'block':'none';}
+function fr(r,s,l,i,k,t){document.getElementById('rR').value=r;document.getElementById('rS').value=s;document.getElementById('rL').value=l;document.getElementById('rI').value=i;document.getElementById('rK').value=k;document.getElementById('rT').value=t;}
+function fc(n,f){document.getElementById('cN').value=n;document.getElementById('cF').value=f;}
+function fa(q){document.getElementById('aQ').value=q;}
+function td(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+function fm(n){return n>=1000000?'$'+(n/1000000).toFixed(1)+'M':n>=1000?'$'+(n/1000).toFixed(0)+'K':'$'+n;}
+function aC(a){return a==='Actively looking'?'var(--gr)':a==='Passively open'?'var(--am)':a==='Open to opportunities'?'var(--bl)':'var(--i3)';}
+function aB(a){return a==='Actively looking'?'var(--gb)':a==='Passively open'?'var(--ab)':a==='Open to opportunities'?'var(--bb)':'var(--bg)';}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.opacity='1';clearTimeout(t._x);t._x=setTimeout(()=>{t.style.opacity='0';},2400);}
+function oM(type,p){document.getElementById('mB').textContent=type==='r'?'Role Intelligence':'Company Intelligence';document.getElementById('mT').textContent=p.title||p.name;document.getElementById('modal').classList.add('on');}
+function cM(){document.getElementById('modal').classList.remove('on');}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')cM();});
+
+function showLoad(steps){
+  const h=(steps||['Scanning…','Profiling…','Analysing…']).map(s=>`<div class="ls"><i class="ti ti-circle-check"></i>${s}</div>`).join('');
+  document.getElementById('mBd').innerHTML=`<div class="ldw"><div class="spin"></div><div class="lst">${h}</div></div>`;
+  let i=0;const go=()=>{const els=document.querySelectorAll('.ls');if(els[i]){els[i].classList.add('on');i++;setTimeout(go,950);}};setTimeout(go,350);
+}
+
+// ── THIS IS THE KEY FUNCTION — calls YOUR Vercel proxy, not Anthropic directly ──
+async function ai(prompt) {
+  const res = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error('API error: ' + err);
+  }
+  const data = await res.json();
+  const raw = data.result || '';
+  const s = raw.indexOf('{'), e = raw.lastIndexOf('}');
+  if (s < 0 || e < 0) throw new Error('No JSON in response');
+  return JSON.parse(raw.slice(s, e + 1));
+}
+
+async function doR(){
+  const role=document.getElementById('rR').value.trim();
+  if(!role){toast('Please enter a target role first.');return;}
+  const title=document.getElementById('rT').value.trim()||role;
+  const sen=document.getElementById('rS').value,loc=document.getElementById('rL').value.trim();
+  const ind=document.getElementById('rI').value.trim(),sk=document.getElementById('rK').value.trim();
+  const btn=document.getElementById('bR');
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Generating…';
+  const id=Date.now(),proj={id,title,role,seniority:sen,location:loc,industry:ind,skills:sk,status:'running',date:td(),data:null};
+  RP.unshift(proj);renderR();oM('r',proj);
+  showLoad(['Scanning talent signals…','Identifying top candidates…','Building market landscape…','Compiling salary data…']);
+  try{
+    const d=await ai(`You are IRIS, a talent intelligence AI. Respond with ONLY valid JSON, nothing else — no markdown, no explanation.
+
+Role: ${role}, Seniority: ${sen||'Senior'}, Location: ${loc||'Global'}, Industry: ${ind||'Tech'}, Skills: ${sk||'general'}
+
+Return this JSON exactly:
+{"executive_summary":"string","market_overview":"string","key_findings":["s","s","s"],"hiring_signals":["s","s","s"],"talent_availability":"string","tam":"string","candidates":[{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":92,"note":"insight","skills":["s","s","s"],"exp":"N years","edu":"Degree, Uni","availability":"Actively looking","linkedin":"slug"},{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":86,"note":"insight","skills":["s","s"],"exp":"N years","edu":"Degree","availability":"Passively open","linkedin":"slug"},{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":80,"note":"insight","skills":["s","s"],"exp":"N years","edu":"Degree","availability":"Open to opportunities","linkedin":"slug"},{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":74,"note":"insight","skills":["s","s"],"exp":"N years","edu":"Degree","availability":"Passively open","linkedin":"slug"},{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":67,"note":"insight","skills":["s","s"],"exp":"N years","edu":"Degree","availability":"Not looking","linkedin":"slug"},{"name":"Full Name","title":"Title","company":"Company","location":"City","fit":60,"note":"insight","skills":["s","s"],"exp":"N years","edu":"Degree","availability":"Actively looking","linkedin":"slug"}],"company_landscape":[{"company":"Co","talent_density":"High","hiring_trend":"Growing","notes":"s"},{"company":"Co","talent_density":"Medium","hiring_trend":"Stable","notes":"s"},{"company":"Co","talent_density":"Medium","hiring_trend":"Shrinking","notes":"s"},{"company":"Co","talent_density":"Low","hiring_trend":"Stable","notes":"s"}],"salary_bands":[{"level":"Junior","min":60000,"max":85000},{"level":"Mid","min":90000,"max":120000},{"level":"Senior","min":120000,"max":165000},{"level":"Lead","min":160000,"max":210000}]}`);
+    proj.data=d;proj.status='complete';proj.candidateCount=d.candidates.length;
+    renderR();renderRR(proj);
+  }catch(e){
+    proj.status='error';renderR();
+    document.getElementById('mBd').innerHTML=`<div style="padding:32px;text-align:center"><div style="font-size:28px;margin-bottom:10px">⚠️</div><div style="font-weight:600;margin-bottom:7px">Generation failed</div><div style="font-size:13px;color:var(--i3);margin-bottom:18px">${e.message.slice(0,300)}</div><button class="btn" style="max-width:180px;margin:0 auto" onclick="cM()">Close</button></div>`;
+  }
+  btn.disabled=false;btn.innerHTML='<i class="ti ti-arrow-right"></i> Begin Role Intelligence';
+}
+
+async function doC(){
+  const name=document.getElementById('cN').value.trim();
+  if(!name){toast('Please enter a company name first.');return;}
+  const focus=document.getElementById('cF').value.trim();
+  const btn=document.getElementById('bC');
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Generating…';
+  const id=Date.now(),proj={id,name,focus,status:'running',date:td(),data:null};
+  CP.unshift(proj);renderC();oM('c',{title:name+' — Intelligence Report',name});
+  showLoad(['Scanning hiring signals…','Mapping org structure…','Identifying sourcing opportunities…','Building target profiles…']);
+  try{
+    const d=await ai(`You are IRIS, a talent intelligence AI. Respond with ONLY valid JSON, nothing else — no markdown, no explanation.
+
+Company: ${name}, Focus: ${focus||'General talent intelligence'}
+
+Return this JSON exactly:
+{"executive_summary":"string","hiring_signals":["s","s","s","s"],"org_structure":{"ceo":"Name","departments":[{"name":"Engineering","head":"Name (Title)","headcount":"~N people","open_roles":12},{"name":"Product","head":"Name (Title)","headcount":"~N people","open_roles":8},{"name":"Design","head":"Name (Title)","headcount":"~N people","open_roles":3},{"name":"Data & AI","head":"Name (Title)","headcount":"~N people","open_roles":5}]},"talent_market_signals":["s","s","s"],"sourcing_opportunities":[{"opportunity":"title","insight":"2-3 sentences","priority":"High"},{"opportunity":"title","insight":"insight","priority":"High"},{"opportunity":"title","insight":"insight","priority":"Medium"}],"target_profiles":[{"title":"Role","why":"why","count":"~N available"},{"title":"Role","why":"why","count":"~N available"},{"title":"Role","why":"why","count":"~N available"}]}`);
+    proj.data=d;proj.status='complete';
+    renderC();renderCR(proj);
+  }catch(e){
+    proj.status='error';renderC();
+    document.getElementById('mBd').innerHTML=`<div style="padding:32px;text-align:center"><div style="font-size:28px;margin-bottom:10px">⚠️</div><div style="font-weight:600;margin-bottom:7px">Generation failed</div><div style="font-size:13px;color:var(--i3);margin-bottom:18px">${e.message.slice(0,300)}</div><button class="btn" style="max-width:180px;margin:0 auto" onclick="cM()">Close</button></div>`;
+  }
+  btn.disabled=false;btn.innerHTML='<i class="ti ti-arrow-right"></i> Begin Company Intelligence';
+}
+
+async function doA(){
+  const q=document.getElementById('aQ').value.trim();
+  if(!q){toast('Please describe what you need first.');return;}
+  const btn=document.getElementById('bA');
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader-2" style="animation:spin 1s linear infinite"></i> Thinking…';
+  try{
+    const c=await ai(`Classify this TA request. Return ONLY JSON, nothing else.
+Request: "${q}"
+If role: {"type":"role","role":"title","seniority":"Senior","location":"city","industry":"industry","skills":"skill1, skill2"}
+If company: {"type":"company","company":"name","focus":"focus area"}`);
+    btn.disabled=false;btn.innerHTML='<i class="ti ti-sparkles"></i> Let IRIS Decide';
+    if(c.type==='company'){fc(c.company||'',c.focus||'');sw('c',document.getElementById('tC'));await doC();}
+    else{fr(c.role||q,c.seniority||'',c.location||'',c.industry||'',c.skills||'',c.role||q);sw('r',document.getElementById('tR'));await doR();}
+  }catch(e){
+    btn.disabled=false;btn.innerHTML='<i class="ti ti-sparkles"></i> Let IRIS Decide';
+    toast('Could not classify — try Role or Company tab directly.');
+  }
+}
+
+function bldC(cands,pid){
+  const pk='p'+pid;let af='all',as='fit';
+  function gf(){let l=[...cands];if(af==='sl')l=l.filter((_,i)=>CS[pk+i]==='sl');else if(af==='ps')l=l.filter((_,i)=>CS[pk+i]==='ps');else if(af==='ul')l=l.filter((_,i)=>!CS[pk+i]);if(as==='fit')l.sort((a,b)=>b.fit-a.fit);else if(as==='name')l.sort((a,b)=>a.name.localeCompare(b.name));else if(as==='av'){const o=['Actively looking','Open to opportunities','Passively open','Not looking'];l.sort((a,b)=>o.indexOf(a.availability)-o.indexOf(b.availability));}return l;}
+  function render(){
+    const w=document.getElementById('cw');if(!w)return;
+    const l=gf(),tot=cands.length,sln=cands.filter((_,i)=>CS[pk+i]==='sl').length,ps=cands.filter((_,i)=>CS[pk+i]==='ps').length,ul=cands.filter((_,i)=>!CS[pk+i]).length;
+    document.querySelectorAll('.fc2').forEach((c,i)=>{if(i===0)c.textContent='All ('+tot+')';if(i===1)c.textContent='Shortlisted ('+sln+')';if(i===2)c.textContent='Passed ('+ps+')';if(i===3)c.textContent='Unlabelled ('+ul+')';});
+    w.innerHTML=l.map(c=>{
+      const oi=cands.indexOf(c),st=CS[pk+oi];
+      const rc=oi===0?'r1':oi===1?'r2':oi===2?'r3':'rn';
+      const lu='https://www.linkedin.com/in/'+(c.linkedin||c.name.toLowerCase().replace(/\s+/g,'-'));
+      const sk=(c.skills||[]).map(s=>`<span class="tg ts">${s}</span>`).join('');
+      const sn=CS[pk+'n'+oi]||'';
+      const sc='da pr'+(st==='sl'?' dsl':''),pc='da ng'+(st==='ps'?' dps':'');
+      const st2=st==='sl'?'<i class="ti ti-check"></i> Shortlisted':'<i class="ti ti-bookmark-plus"></i> Shortlist';
+      const pt2=st==='ps'?'<i class="ti ti-x"></i> Passed':'<i class="ti ti-thumb-down"></i> Pass';
+      const en=c.name.replace(/'/g,"\\'"),et=c.title.replace(/'/g,"\\'"),ec=c.company.replace(/'/g,"\\'");
+      return `<div class="cc" id="cc-${pid}-${oi}"><div class="ccm" onclick="td2('${pid}',${oi})"><span class="rb ${rc}">${oi+1}</span><div class="ci"><div class="cn">${c.name}<a class="lic" href="${lu}" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div><div class="cs">${c.title} · ${c.company} · ${c.location}</div></div><span style="font-size:11px;font-weight:600;padding:2px 7px;border-radius:20px;background:${aB(c.availability)};color:${aC(c.availability)};white-space:nowrap;flex-shrink:0">${c.availability||'Unknown'}</span><div class="fc"><div class="ft"><div class="ff2" style="width:${c.fit}%"></div></div><span class="fp">${c.fit}%</span></div><button class="exb" id="eb-${pid}-${oi}"><i class="ti ti-chevron-down" style="font-size:17px"></i></button></div><div class="dr" id="dr-${pid}-${oi}"><div class="dri">${c.note?`<div class="dn"><strong style="color:var(--t);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px">IRIS Insight</strong>${c.note}</div>`:''}<div class="dtg">${sk}${c.exp?`<span class="tg te"><i class="ti ti-clock" style="font-size:11px"></i>${c.exp}</span>`:''}${c.edu?`<span class="tg tu"><i class="ti ti-school" style="font-size:11px"></i>${c.edu}</span>`:''}<span class="tg tl"><i class="ti ti-map-pin" style="font-size:11px"></i>${c.location}</span></div><div class="ddv"></div><div class="das"><button class="${sc}" onclick="sSL('${pk}',${oi})">${st2}</button><button class="${pc}" onclick="sPS('${pk}',${oi})">${pt2}</button><a class="da" href="${lu}" target="_blank"><i class="ti ti-brand-linkedin"></i> View Profile</a><button class="da am" onclick="cpO('${en}','${et}','${ec}')"><i class="ti ti-mail"></i> Copy Outreach</button><button class="da" onclick="cpP('${en}','${et}','${ec}','${c.location}',${c.fit})"><i class="ti ti-copy"></i> Copy Profile</button></div><div><div class="sh" style="margin-bottom:5px">Recruiter Notes</div><textarea class="na" placeholder="Add notes…" onchange="CS['${pk}n${oi}']=this.value">${sn}</textarea></div></div></div></div>`;
+    }).join('');
+  }
+  window.td2=function(pid,i){const d=document.getElementById('dr-'+pid+'-'+i),b=document.getElementById('eb-'+pid+'-'+i);if(!d)return;const o=d.classList.contains('on');document.querySelectorAll('.dr').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.exb').forEach(x=>x.classList.remove('on'));if(!o){d.classList.add('on');b.classList.add('on');}};
+  window.sSL=function(pk,i){const k=pk+i;CS[k]=CS[k]==='sl'?null:'sl';render();setTimeout(()=>{const pid2=pk.slice(1);const d=document.getElementById('dr-'+pid2+'-'+i),b=document.getElementById('eb-'+pid2+'-'+i);if(d){d.classList.add('on');b.classList.add('on');}},20);};
+  window.sPS=function(pk,i){const k=pk+i;CS[k]=CS[k]==='ps'?null:'ps';render();setTimeout(()=>{const pid2=pk.slice(1);const d=document.getElementById('dr-'+pid2+'-'+i),b=document.getElementById('eb-'+pid2+'-'+i);if(d){d.classList.add('on');b.classList.add('on');}},20);};
+  window.cpO=function(n,t,c){const f=n.split(' ')[0];navigator.clipboard.writeText(`Hi ${f},\n\nI came across your profile and was impressed by your work as ${t} at ${c}.\n\nWe have an exciting opportunity that could be a great fit — would you be open to a quick 15-minute call this week?\n\nBest,`).then(()=>toast('Outreach copied!')).catch(()=>toast('Copied!'));};
+  window.cpP=function(n,t,c,l,f){navigator.clipboard.writeText(`${n} | ${t} @ ${c} | ${l} | Fit: ${f}%`).then(()=>toast('Profile copied!')).catch(()=>toast('Copied!'));};
+  window.setFilt=function(f,el){af=f;document.querySelectorAll('.fc2').forEach(c=>c.classList.remove('on'));el.classList.add('on');render();};
+  window.setSort=function(s){as=s;render();};
+  return{render};
+}
+
+function renderRR(proj){
+  const d=proj.data;
+  const clH=d.company_landscape.map(co=>`<tr><td style="padding:9px 11px;font-weight:500;font-size:13px">${co.company}</td><td style="padding:9px 11px;font-size:13px;color:var(--i3)">${co.talent_density}</td><td style="padding:9px 11px"><span class="pill ${co.hiring_trend==='Growing'?'pg':co.hiring_trend==='Shrinking'?'pa':''}">${co.hiring_trend}</span></td><td style="padding:9px 11px;font-size:12px;color:var(--i3)">${co.notes}</td></tr>`).join('');
+  const sm=d.salary_bands.reduce((m,s)=>Math.max(m,s.max),0)||300000;
+  const saH=d.salary_bands.map(s=>{const l=(s.min/sm)*100,w=((s.max-s.min)/sm)*100;return`<div class="sr"><div class="sl">${s.level}</div><div class="st"><div class="sr2" style="left:${l.toFixed(1)}%;width:${w.toFixed(1)}%"></div></div><div class="sv">${fm(s.min)} – ${fm(s.max)}</div></div>`;}).join('');
+  document.getElementById('mBd').innerHTML=`<div class="rmeta"><span><i class="ti ti-map-pin" style="font-size:13px"></i>${proj.location||'—'}</span><span><i class="ti ti-briefcase" style="font-size:13px"></i>${proj.seniority||'Any level'}</span><span><i class="ti ti-building" style="font-size:13px"></i>${proj.industry||'—'}</span></div><div class="stbs"><button class="stb on" onclick="ss(this,'br')">Market Brief</button><button class="stb" onclick="ss(this,'ca')">Candidates (${d.candidates.length})</button><button class="stb" onclick="ss(this,'cl')">Company Landscape</button><button class="stb" onclick="ss(this,'sa')">Salary Band</button></div><div id="sp-br" class="spp on"><div class="bg3"><div class="bc"><div class="bcl">Talent Availability</div><div class="bcv" style="font-size:14px;line-height:1.4">${d.talent_availability}</div></div><div class="bc"><div class="bcl">Total Addressable Market</div><div class="bcv">${d.tam}</div></div><div class="bc"><div class="bcl">Candidates Found</div><div class="bcv" style="color:var(--t)">${d.candidates.length}</div></div></div><div class="sh">Hiring Signals</div><div class="sigs">${d.hiring_signals.map(s=>`<div class="sig"><i class="ti ti-activity"></i>${s}</div>`).join('')}</div><div class="sh">Executive Summary</div><div class="prose">${d.executive_summary}</div><div class="sh">Market Overview</div><div class="prose">${d.market_overview}</div><div class="sh">Key Findings</div>${d.key_findings.map(f=>`<div class="sig" style="background:var(--bg)"><i class="ti ti-point-filled" style="color:var(--tm)"></i>${f}</div>`).join('')}</div><div id="sp-ca" class="spp"><div class="fb"><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="fc2 on" onclick="setFilt('all',this)">All (${d.candidates.length})</button><button class="fc2" onclick="setFilt('sl',this)">Shortlisted (0)</button><button class="fc2" onclick="setFilt('ps',this)">Passed (0)</button><button class="fc2" onclick="setFilt('ul',this)">Unlabelled (${d.candidates.length})</button></div><select class="fs" onchange="setSort(this.value)"><option value="fit">Sort: Fit Score</option><option value="av">Sort: Availability</option><option value="name">Sort: Name A–Z</option></select></div><div class="cw" id="cw"></div></div><div id="sp-cl" class="spp"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:7px 11px;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--i3);border-bottom:1px solid var(--bd)">Company</th><th style="text-align:left;padding:7px 11px;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--i3);border-bottom:1px solid var(--bd)">Density</th><th style="text-align:left;padding:7px 11px;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--i3);border-bottom:1px solid var(--bd)">Trend</th><th style="text-align:left;padding:7px 11px;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--i3);border-bottom:1px solid var(--bd)">Notes</th></tr></thead><tbody>${clH}</tbody></table></div><div id="sp-sa" class="spp"><p class="prose" style="margin-bottom:18px">Salary ranges for ${proj.role} in ${proj.industry||'tech'}.</p>${saH}</div>`;
+  const{render}=bldC(d.candidates,proj.id);render();
+}
+
+function renderCR(proj){
+  const d=proj.data;const pc=p=>p==='High'?'pg':p==='Low'?'':'pa';
+  document.getElementById('mBd').innerHTML=`<div class="stbs"><button class="stb on" onclick="ss(this,'cb')">Market Brief</button><button class="stb" onclick="ss(this,'co')">Org Structure</button><button class="stb" onclick="ss(this,'cp')">Sourcing Opps</button><button class="stb" onclick="ss(this,'ct')">Target Profiles</button></div><div id="sp-cb" class="spp on"><div class="sh">Executive Summary</div><div class="prose">${d.executive_summary}</div><div class="sh">Hiring Signals</div><div class="sigs">${d.hiring_signals.map(s=>`<div class="sig"><i class="ti ti-activity"></i>${s}</div>`).join('')}</div><div class="sh">Talent & Market Signals</div>${d.talent_market_signals.map(s=>`<div class="sig" style="background:var(--bg)"><i class="ti ti-trending-up" style="color:var(--tm)"></i>${s}</div>`).join('')}</div><div id="sp-co" class="spp"><div style="overflow-x:auto"><div style="display:flex;flex-direction:column;align-items:center;min-width:380px"><div class="ol"><div class="on2 root"><div class="nt">CEO</div><div class="ns">${d.org_structure.ceo}</div></div></div><div class="oc"></div><div class="ol">${d.org_structure.departments.map(dep=>`<div class="on2"><div class="nt">${dep.name}</div><div class="ns">${dep.head}</div><div class="ns" style="color:var(--t);font-weight:600;margin-top:3px">${dep.headcount} · ${dep.open_roles} open</div></div>`).join('')}</div></div></div></div><div id="sp-cp" class="spp">${d.sourcing_opportunities.map(o=>`<div style="padding:14px;border:1px solid var(--bd);border-radius:12px;margin-bottom:10px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><div style="font-weight:600;font-size:14px">${o.opportunity}</div><span class="pill ${pc(o.priority)}">${o.priority} Priority</span></div><div style="font-size:13px;color:var(--i2);line-height:1.6">${o.insight}</div></div>`).join('')}</div><div id="sp-ct" class="spp">${d.target_profiles.map(p=>`<div style="padding:14px;border:1px solid var(--bd);border-radius:12px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start"><div style="width:42px;height:42px;border-radius:10px;background:var(--tl);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-user" style="font-size:19px;color:var(--t)"></i></div><div><div style="font-weight:600;font-size:14px;margin-bottom:3px">${p.title}</div><div style="font-size:13px;color:var(--i2);line-height:1.5;margin-bottom:5px">${p.why}</div><div style="font-size:12px;color:var(--t);font-weight:600">${p.count} estimated profiles</div></div></div>`).join('')}</div>`;
+}
+
+function ss(btn,id){const b=document.getElementById('mBd');b.querySelectorAll('.stb').forEach(t=>t.classList.remove('on'));b.querySelectorAll('.spp').forEach(p=>p.classList.remove('on'));btn.classList.add('on');document.getElementById('sp-'+id).classList.add('on');}
+
+function renderR(f){
+  const el=document.getElementById('rl'),q=(f||'').toLowerCase();
+  document.getElementById('rc').textContent=RP.length+' search'+(RP.length!==1?'es':'');
+  const list=RP.filter(p=>!q||(p.title||p.role).toLowerCase().includes(q)||(p.location||'').toLowerCase().includes(q));
+  if(!list.length){el.innerHTML='<div style="padding:22px;text-align:center;color:var(--i3);font-size:13px">No searches yet — generate your first report above!</div>';return;}
+  el.innerHTML=list.map(p=>`<div class="ar rr" onclick="oRP(${p.id})"><div class="rt">${p.title||p.role}</div><div class="rm">${p.seniority||'—'}</div><div class="rm">${p.location||'—'}</div><div><span class="pill ${p.status==='complete'?'pg':'pa'}">${p.status}</span></div><div class="cn2">${p.candidateCount?`<i class="ti ti-users" style="font-size:12px"></i>${p.candidateCount}`:''}</div></div>`).join('');
+}
+function renderC(f){
+  const el=document.getElementById('cl'),q=(f||'').toLowerCase();
+  document.getElementById('cct').textContent=CP.length+' report'+(CP.length!==1?'s':'');
+  const list=CP.filter(p=>!q||p.name.toLowerCase().includes(q));
+  if(!list.length){el.innerHTML='<div style="padding:22px;text-align:center;color:var(--i3);font-size:13px">No company reports yet — run your first analysis above!</div>';return;}
+  el.innerHTML=list.map(p=>`<div class="ar cr" onclick="oCP(${p.id})"><div><div class="rt">${p.name}</div><div class="rm" style="font-size:11px">${p.name} — Intelligence Report</div></div><div><span class="pill ${p.status==='complete'?'pg':'pa'}">${p.status}</span></div><div class="rm">${p.date}</div></div>`).join('');
+}
+function oRP(id){const p=RP.find(x=>x.id===id);if(!p)return;oM('r',p);if(p.data)renderRR(p);else showLoad();}
+function oCP(id){const p=CP.find(x=>x.id===id);if(!p)return;oM('c',{title:p.name+' — Intelligence Report',name:p.name});if(p.data)renderCR(p);else showLoad();}
+function fR(q){renderR(q);}function fC(q){renderC(q);}
+renderR();renderC();
+</script>
+</body>
+</html>
